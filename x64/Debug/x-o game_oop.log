@@ -1,4 +1,2 @@
-﻿  GameManager.cpp
-  x-o game_oop.cpp
-  Generating Code...
+﻿  Board.cpp
   x-o game_oop.vcxproj -> E:\Study\Second Year\Second Year_FirstSemester\OOP\x-o game_oop\x64\Debug\x-o game_oop.exe

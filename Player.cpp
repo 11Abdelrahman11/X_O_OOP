@@ -11,6 +11,16 @@ Player::Player(int order, char symbl)
 	symbol = symbl;
 }
 
+void Player::set_name(string nme)
+{
+	this->name = nme;
+}
+
+string Player::get_name()
+{
+	return this-> name;
+}
+
 void Player::get_move(int& x, int& y)
 {
 }

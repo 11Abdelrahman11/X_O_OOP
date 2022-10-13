@@ -11,10 +11,12 @@ class Board
 protected:
 	char board[3][3] = { {0} };
 	int n_moves = 0;
+	char winner_symbol;
 public:
 	bool update_board(int x, int y, char symbol);
 	bool is_winner();
 	bool is_draw();
 	void display_board();
+	char get_winner_symbol();
 };
 

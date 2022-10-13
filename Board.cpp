@@ -2,13 +2,12 @@
 
 bool Board::update_board(int x, int y, char symbl)
 {
-    while ((x > 2 || x < 0) || (y > 2 || y < 0)) {
+    while (((x > 2 || x < 0) || (y > 2 || y < 0)) || this->board[x][y] != '\0') {
         cout << "Invalid Input!";
         cin >> x >> y;
     }
-    this ->board[x][y] = symbl;
+    this->board[x][y] = symbl;
     n_moves += 1;
-    cout << "Number Of Moves Been Done: " << n_moves << endl;
     return true;
 }
 
@@ -16,12 +15,22 @@ bool Board::is_winner()
 {
     int p1 = 0, p2 = 0, p3 = 0, p4 = 0;
     for (size_t i = 0; i < 3; i++) {
-            if (this->board[p1][p2] == 'x' && this->board[p1][p2 + 1] == 'x' && this->board[p1][p2 + 2] == 'x' || this->board[p1][p2] == 'o' && this->board[p1][p2 + 1] == 'o' && this->board[p1][p2 + 2] == 'o') {
+            if (this->board[p1][p2] == 'x' && this->board[p1][p2 + 1] == 'x' && this->board[p1][p2 + 2] == 'x') {
                 return true;
+                winner_symbol = 'x';
+            }
+            else if (this->board[p1][p2] == 'o' && this->board[p1][p2 + 1] == 'o' && this->board[p1][p2 + 2] == 'o') {
+                return true;
+                winner_symbol = 'o';
             }
             p1 += 1;
-            if (this->board[p3][p4] == 'x' && this->board[p3+1][p4] == 'x' && this->board[p3+2][p4] == 'x' || this->board[p3][p4] == 'o' && this->board[p3 + 1][p4] == 'o' && this->board[p3 + 2][p4] == 'o') {
+            if (this->board[p3][p4] == 'x' && this->board[p3+1][p4] == 'x' && this->board[p3+2][p4] == 'x') {
                 return true;
+                winner_symbol = 'x';
+            }
+            else if (this->board[p3][p4] == 'o' && this->board[p3 + 1][p4] == 'o' && this->board[p3 + 2][p4] == 'o') {
+                return true;
+                winner_symbol = 'o';
             }
             p4 += 1;
     }
@@ -58,4 +67,9 @@ void Board::display_board()
         }
         cout << endl;
     }
+}
+
+char Board::get_winner_symbol()
+{
+    return this-> winner_symbol;
 }
